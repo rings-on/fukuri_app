@@ -1,1 +1,28 @@
+name: Auto Login
 
+on:
+  schedule:
+    - cron: '0 9 * * *'  # 毎日午前9時
+  workflow_dispatch:  # 手動実行も可能
+
+jobs:
+  login:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm install
+    
+    - name: Run login script
+      run: npm start
+      env:
+        LOGIN_EMAIL: ${{ secrets.LOGIN_EMAIL }}
+        LOGIN_PASSWORD: ${{ secrets.LOGIN_PASSWORD }}
