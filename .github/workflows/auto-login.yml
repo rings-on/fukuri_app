@@ -19,9 +19,11 @@ jobs:
     
     - name: Install dependencies
       run: npm install
+      working-directory: .  # ここを追加
     
     - name: Run login script
       run: npm start
+      working-directory: .  # ここを追加
       env:
         LOGIN_EMAIL: ${{ secrets.LOGIN_EMAIL }}
         LOGIN_PASSWORD: ${{ secrets.LOGIN_PASSWORD }}
