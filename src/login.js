@@ -23,12 +23,12 @@ async function autoLogin() {
         
         console.log('ログインページにアクセス中...');
         // ここにログインページのURLを設定
-        await page.goto('YOUR_LOGIN_PAGE_URL', { waitUntil: 'networkidle2' });
+        await page.goto('https://secure.shisaku-pad.co.jp', { waitUntil: 'networkidle2' });
         
         // メールアドレス入力
         console.log('メールアドレスを入力中...');
-        await page.waitForSelector('input[placeholder="example@shisaku-pad.co.jp"]');
-        await page.type('input[placeholder="example@shisaku-pad.co.jp"]', process.env.LOGIN_EMAIL);
+        await page.waitForSelector('input[placeholder="example@fukuri-app.jp"]');
+        await page.type('input[placeholder="example@fukuri-app.jp"]', process.env.LOGIN_EMAIL);
         
         // パスワード入力
         console.log('パスワードを入力中...');
