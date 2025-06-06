@@ -23,7 +23,7 @@ async function autoLogin() {
         
         console.log('ログインページにアクセス中...');
         // ここにログインページのURLを設定
-        await page.goto('YOUR_LOGIN_PAGE_URL', { waitUntil: 'networkidle2' });
+        await page.goto('https://secure.shisaku-pad.co.jp', { waitUntil: 'networkidle2' });
         
         // メールアドレス入力
         console.log('メールアドレスを入力中...');
