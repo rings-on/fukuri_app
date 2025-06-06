@@ -1,1 +1,16 @@
-
+{
+  "name": "fukuri-app-automation",
+  "version": "1.0.0",
+  "description": "Automated login with Puppeteer",
+  "main": "src/login.js",
+  "scripts": {
+    "start": "node src/login.js",
+    "test": "node src/login.js"
+  },
+  "dependencies": {
+    "puppeteer": "^21.0.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
