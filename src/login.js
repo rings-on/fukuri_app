@@ -27,7 +27,7 @@ async function autoLogin() {
         
         // メールアドレス入力
         console.log('メールアドレスを入力中...');
-        await page.waitForSelector('input[placeholder="example@shisaku-pad.co.jp"]');
+        await page.waitForSelector('input[placeholder="example@fukuri-app.jp"]');
         await page.type('input[placeholder="example@shisaku-pad.co.jp"]', process.env.LOGIN_EMAIL);
         
         // パスワード入力
