@@ -2,8 +2,8 @@ name: Auto Login
 
 on:
   schedule:
-    - cron: '0 9 * * *'  # 毎日午前9時
-  workflow_dispatch:  # 手動実行も可能
+    - cron: '0 9 * * *'
+  workflow_dispatch:
 
 jobs:
   login:
@@ -16,7 +16,6 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: '18'
-        # cache設定を削除
     
     - name: Install dependencies
       run: npm install
@@ -26,10 +25,3 @@ jobs:
       env:
         LOGIN_EMAIL: ${{ secrets.LOGIN_EMAIL }}
         LOGIN_PASSWORD: ${{ secrets.LOGIN_PASSWORD }}
-    
-    - name: Upload screenshots
-      uses: actions/upload-artifact@v4
-      if: always()
-      with:
-        name: screenshots
-        path: result.png
