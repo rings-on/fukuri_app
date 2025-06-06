@@ -1,32 +1,27 @@
-name: Auto Login Debug
+name: Auto Login
 
 on:
+  schedule:
+    - cron: '0 9 * * *'
   workflow_dispatch:
 
 jobs:
-  debug:
+  login:
     runs-on: ubuntu-latest
     
     steps:
     - uses: actions/checkout@v4
     
-    - name: Debug - Environment Info
-      run: |
-        echo "=== Current Working Directory ==="
-        pwd
-        echo ""
-        echo "=== Files in Root Directory ==="
-        ls -la
-        echo ""
-        echo "=== Search for package.json ==="
-        find . -name "package.json" -type f
-        echo ""
-        echo "=== package.json content (if exists) ==="
-        if [ -f "package.json" ]; then
-          cat package.json
-        else
-          echo "package.json not found in current directory"
-        fi
-        echo ""
-        echo "=== Directory Tree ==="
-        find . -type f | head -20
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+    
+    - name: Install dependencies
+      run: npm install
+    
+    - name: Run login script
+      run: npm start
+      env:
+        LOGIN_EMAIL: ${{ secrets.LOGIN_EMAIL }}
+        LOGIN_PASSWORD: ${{ secrets.LOGIN_PASSWORD }}
